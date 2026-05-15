@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Universal Export</title>
+<style>
+  body { max-width: 720px; margin: 48px auto; padding: 0 24px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.7; color: #1a1a1a; }
+  h1 { font-size: 28px; border-bottom: 2px solid #e5e5e5; padding-bottom: 12px; }
+  h2 { font-size: 20px; margin-top: 36px; }
+  p, li { font-size: 15px; }
+  table { border-collapse: collapse; width: 100%; margin: 16px 0; }
+  th, td { border: 1px solid #e5e5e5; padding: 10px 14px; text-align: left; font-size: 14px; }
+  th { background: #f5f5f5; }
+  code { background: #f0f0f0; padding: 2px 6px; border-radius: 3px; font-size: 13px; }
+  .updated { color: #888; font-size: 13px; margin-bottom: 32px; }
+  a { color: #2563eb; }
+</style>
+</head>
+<body>
+
+<h1>Privacy Policy for Universal Export</h1>
+<p class="updated">Last updated: 2026-05-15</p>
+
+<h2>Overview</h2>
+<p>Universal Export is a Chrome extension designed to export AI chat conversations and web text as Markdown, PDF, or Word files, with an optional local knowledge base. <strong>We do not collect, store, or transmit your personal data to any server controlled by the developer.</strong></p>
+
+<h2>Data Collection</h2>
+<p><strong>Universal Export collects zero data.</strong> There is no analytics, no tracking, no telemetry, and no advertising in this extension. The developer does not operate any backend servers and has no means to receive your data.</p>
+
+<h2>Local Storage</h2>
+<p>All data created by the extension is stored <strong>exclusively on your device</strong> using Chrome's <code>storage.local</code> API and IndexedDB:</p>
+<ul>
+  <li><strong>Knowledge Base entries</strong> — Your saved conversations, including titles, content, tags, categories, and metadata</li>
+  <li><strong>Settings</strong> — Your preferences, LLM provider configuration, and GitHub sync settings</li>
+  <li><strong>API Keys</strong> — Your LLM provider API keys and GitHub personal access tokens</li>
+</ul>
+<p>This data never leaves your browser unless you explicitly choose to sync it (see GitHub Backup below).</p>
+
+<h2>AI Processing (Optional Feature)</h2>
+<p>When you enable AI enhancement features:</p>
+<ul>
+  <li>Selected chat content is sent <strong>directly from your browser</strong> to the LLM provider you configure (DeepSeek, OpenAI, Google Gemini, Alibaba Qwen, ByteDance Doubao, or a local Ollama instance)</li>
+  <li>The extension acts as a client only — it does <strong>not</strong> route traffic through any intermediate server</li>
+  <li>Content is only sent when you take an explicit action (export or save to knowledge base)</li>
+  <li>The extension never scans pages or reads conversations without your action</li>
+  <li>Your API key is stored locally and transmitted only to the provider's official API endpoint</li>
+</ul>
+<p>You are responsible for complying with your chosen LLM provider's terms of service and privacy policy.</p>
+
+<h2>GitHub Backup (Optional Feature)</h2>
+<p>If you enable GitHub backup:</p>
+<ul>
+  <li>Your knowledge base data is pushed to a GitHub repository <strong>that you own and control</strong></li>
+  <li>Your GitHub personal access token is stored locally on your device</li>
+  <li>You control the repository visibility (private recommended for sensitive content)</li>
+</ul>
+
+<h2>Permissions</h2>
+<p>The extension requests the following Chrome permissions:</p>
+<table>
+<tr><th>Permission</th><th>Purpose</th></tr>
+<tr><td><code>contextMenus</code></td><td>Add export options to the right-click menu</td></tr>
+<tr><td><code>activeTab</code></td><td>Access the current tab to detect selected content</td></tr>
+<tr><td><code>scripting</code></td><td>Execute export logic on the current page</td></tr>
+<tr><td><code>downloads</code></td><td>Save exported files to your computer</td></tr>
+<tr><td><code>storage</code> / <code>unlimitedStorage</code></td><td>Store knowledge base entries and settings locally</td></tr>
+<tr><td><code>alarms</code></td><td>Schedule periodic AI optimization tasks</td></tr>
+<tr><td><code>&lt;all_urls&gt;</code></td><td>Work on any AI chat website you visit (not limited to a preset list)</td></tr>
+<tr><td>LLM provider hosts</td><td>Call AI APIs directly from your browser</td></tr>
+</table>
+<p>None of these permissions are used to collect, track, or transmit user data to the developer.</p>
+
+<h2>Third-Party Services</h2>
+<p>This extension integrates with third-party LLM API providers solely as a client. When you use AI features, your selected content is sent to the provider you configure. Please refer to their respective privacy policies:</p>
+<ul>
+  <li><a href="https://api.deepseek.com/privacy">DeepSeek Privacy Policy</a></li>
+  <li><a href="https://openai.com/privacy">OpenAI Privacy Policy</a></li>
+  <li><a href="https://policies.google.com/privacy">Google Gemini Privacy Policy</a></li>
+  <li><a href="https://www.alibabacloud.com/help/en/legal/privacy-policy">Alibaba Qwen Privacy Policy</a></li>
+  <li><a href="https://www.volcengine.com/docs/6791/133831">ByteDance Doubao Privacy Policy</a></li>
+</ul>
+
+<h2>Children's Privacy</h2>
+<p>This extension is not directed at children under the age of 13. It does not knowingly collect personal information from children.</p>
+
+<h2>Changes to This Policy</h2>
+<p>We may update this privacy policy from time to time. Changes will be reflected on this page with an updated "Last updated" date.</p>
+
+<h2>Contact</h2>
+<p>If you have questions about this privacy policy, please contact:</p>
+<ul>
+  <li><strong>Email:</strong> latnasm@gmail.com</li>
+</ul>
+
+</body>
+</html>
