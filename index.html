@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Privacy Policy — Universal Export</title>
+<title>Privacy Policy — MindArchive (Universal Export)</title>
 <style>
   body { max-width: 720px; margin: 48px auto; padding: 0 24px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.7; color: #1a1a1a; }
   h1 { font-size: 28px; border-bottom: 2px solid #e5e5e5; padding-bottom: 12px; }
@@ -19,67 +19,129 @@
 </head>
 <body>
 
-<h1>Privacy Policy for Universal Export</h1>
-<p class="updated">Last updated: 2026-05-15</p>
+<h1>Privacy Policy for MindArchive (Universal Export)</h1>
+<p class="updated">Last updated: 2026-07-13</p>
 
 <h2>Overview</h2>
-<p>Universal Export is a Chrome extension designed to export AI chat conversations and web text as Markdown, PDF, or Word files, with an optional local knowledge base. <strong>We do not collect, store, or transmit your personal data to any server controlled by the developer.</strong></p>
+<p>MindArchive (published as "Universal Export" in the Chrome Web Store) is a Chrome extension that helps you:</p>
+<ul>
+  <li><strong>Export</strong> AI chat conversations and web text as Markdown, PDF, Word, HTML, CSV, or JSON</li>
+  <li><strong>Clip and organize</strong> content into a local, searchable knowledge base with categories and tags (Obsidian-compatible)</li>
+  <li><strong>Quick-capture notes</strong> via the side panel</li>
+  <li><strong>Send clippings</strong> directly to your Obsidian vault</li>
+  <li><strong>Back up</strong> your knowledge base to your own GitHub repository</li>
+  <li><strong>Enhance</strong> exports with AI-generated titles, tags, summaries, and content cleanup (optional — requires your own API key)</li>
+</ul>
+<p><strong>The extension does not use analytics, tracking, telemetry, or advertising.</strong> The developer does not operate any backend servers and does not automatically receive your data.</p>
 
 <h2>Data Collection</h2>
-<p><strong>Universal Export collects zero data.</strong> There is no analytics, no tracking, no telemetry, and no advertising in this extension. The developer does not operate any backend servers and has no means to receive your data.</p>
+<p><strong>MindArchive does not automatically collect, track, or transmit your personal data.</strong> There is no analytics SDK, no telemetry, and no background data upload of any kind.</p>
+<p>The sole exception is the <strong>optional feedback form</strong>, which you may choose to submit manually (see Feedback section below).</p>
 
 <h2>Local Storage</h2>
-<p>All data created by the extension is stored <strong>exclusively on your device</strong> using Chrome's <code>storage.local</code> API and IndexedDB:</p>
+<p>All data created or managed by the extension is stored <strong>exclusively on your device</strong> using Chrome's <code>storage.local</code> API and IndexedDB:</p>
 <ul>
-  <li><strong>Knowledge Base entries</strong> — Your saved conversations, including titles, content, tags, categories, and metadata</li>
-  <li><strong>Settings</strong> — Your preferences, LLM provider configuration, and GitHub sync settings</li>
-  <li><strong>API Keys</strong> — Your LLM provider API keys and GitHub personal access tokens</li>
+  <li><strong>Knowledge Base entries</strong> — Your saved content: titles, body (Markdown), tags, categories, source URL, and metadata</li>
+  <li><strong>Categories and tags</strong> — Your organizational structure</li>
+  <li><strong>Settings</strong> — Your preferences, export format defaults, theme, language, and download path</li>
+  <li><strong>LLM configuration</strong> — Your chosen provider, model, custom prompts, and API key</li>
+  <li><strong>GitHub sync configuration</strong> — Your GitHub personal access token, repository name, and branch</li>
+  <li><strong>Sync cache</strong> — Content hashes used to detect changes for incremental GitHub backup (computed locally)</li>
 </ul>
-<p>This data never leaves your browser unless you explicitly choose to sync it (see GitHub Backup below).</p>
+<p>This data never leaves your browser unless you explicitly initiate one of the opt-in features below.</p>
+
+<h2>User Feedback (Optional)</h2>
+<p>MindArchive includes a feedback form accessible from the extension UI. When you choose to submit feedback, the following information is sent to a GitHub Issues repository (<code>runday/universalExport-feedback</code>) controlled by the developer:</p>
+<ul>
+  <li><strong>Rating</strong> — Your 1–5 star rating</li>
+  <li><strong>Message</strong> — Your written feedback or bug description</li>
+  <li><strong>Bug flag</strong> — Whether you marked the submission as a bug report</li>
+  <li><strong>Extension version</strong> — To help diagnose issues</li>
+  <li><strong>User-Agent string</strong> — Truncated to 100 characters (identifies browser and OS version)</li>
+  <li><strong>Browser locale</strong> — e.g. "en", "zh-CN"</li>
+  <li><strong>Timestamp</strong> — When the feedback was submitted</li>
+</ul>
+<p>This data is used solely to triage bug reports and improve the extension. No feedback is submitted unless you fill out the form and click the submit button. Feedback submissions are routed through the extension's background Service Worker directly to the GitHub API — no intermediate server is involved.</p>
 
 <h2>AI Processing (Optional Feature)</h2>
-<p>When you enable AI enhancement features:</p>
+<p>AI enhancement is <strong>disabled by default</strong>. To use it, you must explicitly enable it in Settings and provide your own API key for one of the supported LLM providers.</p>
+<p>When enabled:</p>
 <ul>
-  <li>Selected chat content is sent <strong>directly from your browser</strong> to the LLM provider you configure (DeepSeek, OpenAI, Google Gemini, Alibaba Qwen, ByteDance Doubao, or a local Ollama instance)</li>
+  <li>Selected chat content is sent <strong>directly from your browser</strong> (via the extension's background Service Worker) to the LLM provider you configure</li>
   <li>The extension acts as a client only — it does <strong>not</strong> route traffic through any intermediate server</li>
-  <li>Content is only sent when you take an explicit action (export or save to knowledge base)</li>
+  <li>Content is only sent when you take an explicit action (export, save to knowledge base, or run AI enhancement)</li>
   <li>The extension never scans pages or reads conversations without your action</li>
-  <li>Your API key is stored locally and transmitted only to the provider's official API endpoint</li>
+  <li>Your API key is stored in Chrome's local storage and transmitted only to the provider's official API endpoint</li>
+  <li>You can configure custom system prompts for each AI task (title, tags, summary, denoise, category, source detection)</li>
+</ul>
+<p><strong>Supported LLM providers:</strong></p>
+<ul>
+  <li><strong>Cloud providers</strong> — DeepSeek, OpenAI, Anthropic Claude, Google Gemini, Alibaba Qwen (via OpenAI-compatible API), ByteDance Doubao (via OpenAI-compatible API), and any OpenAI-compatible endpoint you configure</li>
+  <li><strong>Local provider</strong> — <strong>Ollama</strong> runs entirely on your machine; content is sent to <code>localhost</code> and never leaves your device</li>
 </ul>
 <p>You are responsible for complying with your chosen LLM provider's terms of service and privacy policy.</p>
 
 <h2>GitHub Backup (Optional Feature)</h2>
 <p>If you enable GitHub backup:</p>
 <ul>
-  <li>Your knowledge base data is pushed to a GitHub repository <strong>that you own and control</strong></li>
-  <li>Your GitHub personal access token is stored locally on your device</li>
-  <li>You control the repository visibility (private recommended for sensitive content)</li>
+  <li>Your knowledge base entries and categories are pushed as Markdown files to a GitHub repository <strong>that you own and control</strong></li>
+  <li>Your GitHub personal access token is stored locally in Chrome's <code>storage.local</code></li>
+  <li>You control the repository visibility — <strong>private is recommended</strong> for sensitive content</li>
+  <li>Sync is incremental: only changed files are uploaded, using content hashing to detect modifications locally before any network request</li>
+  <li>You can also <strong>download</strong> (restore) your knowledge base from GitHub at any time</li>
+  <li>All communication is between your browser and the GitHub API (<code>api.github.com</code>) — the developer is not involved</li>
 </ul>
+
+<h2>Obsidian Integration (Optional Feature)</h2>
+<p>When you use the "Send to Obsidian" feature:</p>
+<ul>
+  <li>The extension writes a Markdown file directly to a subdirectory inside your Obsidian vault using Chrome's <strong>File System Access API</strong></li>
+  <li>You select which vault folder to use; the extension remembers your choice locally</li>
+  <li>The file includes a YAML frontmatter with title, source URL, creation date, and tags</li>
+  <li>No data is transmitted over the network — all file operations are local to your device</li>
+</ul>
+
+<h2>Side Panel</h2>
+<p>The extension provides a side panel for quick note capture. Notes you write in the side panel are stored locally alongside your other knowledge base entries. The side panel does not transmit data anywhere.</p>
 
 <h2>Permissions</h2>
 <p>The extension requests the following Chrome permissions:</p>
 <table>
 <tr><th>Permission</th><th>Purpose</th></tr>
 <tr><td><code>contextMenus</code></td><td>Add export options to the right-click menu</td></tr>
-<tr><td><code>activeTab</code></td><td>Access the current tab to detect selected content</td></tr>
-<tr><td><code>scripting</code></td><td>Execute export logic on the current page</td></tr>
+<tr><td><code>activeTab</code></td><td>Access the current tab when you invoke an export action</td></tr>
+<tr><td><code>scripting</code></td><td>Run export and content extraction logic on the current page</td></tr>
+<tr><td><code>tabs</code></td><td>Open the preview page, dashboard, and markdown viewer in new tabs</td></tr>
 <tr><td><code>downloads</code></td><td>Save exported files to your computer</td></tr>
-<tr><td><code>storage</code> / <code>unlimitedStorage</code></td><td>Store knowledge base entries and settings locally</td></tr>
-<tr><td><code>alarms</code></td><td>Schedule periodic AI optimization tasks</td></tr>
-<tr><td><code>&lt;all_urls&gt;</code></td><td>Work on any AI chat website you visit (not limited to a preset list)</td></tr>
-<tr><td>LLM provider hosts</td><td>Call AI APIs directly from your browser</td></tr>
+<tr><td><code>storage</code> / <code>unlimitedStorage</code></td><td>Store knowledge base entries, settings, and sync cache locally</td></tr>
+<tr><td><code>alarms</code></td><td>Schedule periodic tasks such as GitHub sync</td></tr>
+<tr><td><code>sidePanel</code></td><td>Provide a side panel for quick note capture</td></tr>
 </table>
-<p>None of these permissions are used to collect, track, or transmit user data to the developer.</p>
+
+<h3>Host Permissions</h3>
+<p>The extension requests access to the following URLs:</p>
+<table>
+<tr><th>Host</th><th>Purpose</th></tr>
+<tr><td><code>&lt;all_urls&gt;</code></td><td>Detect and extract content from any AI chat platform you visit. Content scripts are injected on all pages to enable right-click export and automatic platform detection, but do not read or transmit page content until you take an action.</td></tr>
+<tr><td><code>https://api.deepseek.com/*</code></td><td>Call DeepSeek API for AI enhancement (only when configured)</td></tr>
+<tr><td><code>https://api.openai.com/*</code></td><td>Call OpenAI API for AI enhancement (only when configured)</td></tr>
+<tr><td><code>https://api.anthropic.com/*</code></td><td>Call Anthropic Claude API for AI enhancement (only when configured)</td></tr>
+<tr><td><code>https://generativelanguage.googleapis.com/*</code></td><td>Call Google Gemini API for AI enhancement (only when configured)</td></tr>
+</table>
+<p>Host permissions for LLM APIs are declared so the extension's Service Worker can make direct <code>fetch()</code> calls to those endpoints, bypassing the restrictive Content Security Policy of AI chat websites. No traffic is routed through any server controlled by the developer.</p>
+<p>Additionally, if you use <strong>GitHub backup</strong> or submit <strong>feedback</strong>, the extension communicates with <code>https://api.github.com</code>. If you use <strong>Ollama</strong>, the extension communicates with <code>http://localhost:11434</code> on your machine.</p>
 
 <h2>Third-Party Services</h2>
 <p>This extension integrates with third-party LLM API providers solely as a client. When you use AI features, your selected content is sent to the provider you configure. Please refer to their respective privacy policies:</p>
 <ul>
   <li><a href="https://api.deepseek.com/privacy">DeepSeek Privacy Policy</a></li>
   <li><a href="https://openai.com/privacy">OpenAI Privacy Policy</a></li>
+  <li><a href="https://www.anthropic.com/privacy">Anthropic (Claude) Privacy Policy</a></li>
   <li><a href="https://policies.google.com/privacy">Google Gemini Privacy Policy</a></li>
   <li><a href="https://www.alibabacloud.com/help/en/legal/privacy-policy">Alibaba Qwen Privacy Policy</a></li>
   <li><a href="https://www.volcengine.com/docs/6791/133831">ByteDance Doubao Privacy Policy</a></li>
 </ul>
+<p>If you use GitHub backup or the feedback form, the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub Privacy Statement</a> also applies.</p>
 
 <h2>Children's Privacy</h2>
 <p>This extension is not directed at children under the age of 13. It does not knowingly collect personal information from children.</p>
