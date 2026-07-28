@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Privacy Policy — MindArchive (Universal Export)</title>
+<title>Privacy Policy — MindArchive</title>
 <style>
   body { max-width: 720px; margin: 48px auto; padding: 0 24px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.7; color: #1a1a1a; }
   h1 { font-size: 28px; border-bottom: 2px solid #e5e5e5; padding-bottom: 12px; }
@@ -20,17 +20,18 @@
 <body>
 
 <h1>Privacy Policy for MindArchive</h1>
-<p class="updated">Last updated: 2026-07-13</p>
+<p class="updated">Last updated: 2026-07-28</p>
 
 <h2>Overview</h2>
-<p>MindArchive is a Chrome extension that helps you:</p>
+<p>MindArchive is a Chrome extension that provides a local, Obsidian-compatible Markdown knowledge base for your AI conversations and web content. It helps you:</p>
 <ul>
+  <li><strong>Organize</strong> AI conversations and web content into a local, searchable Markdown knowledge base with categories and tags</li>
+  <li><strong>Edit</strong> content with a built-in WYSIWYG Markdown editor</li>
   <li><strong>Export</strong> AI chat conversations and web text as Markdown, PDF, Word, HTML, CSV, or JSON</li>
-  <li><strong>Clip and organize</strong> content into a local, searchable knowledge base with categories and tags (Obsidian-compatible)</li>
   <li><strong>Quick-capture notes</strong> via the side panel</li>
-  <li><strong>Send clippings</strong> directly to your Obsidian vault</li>
+  <li><strong>View and edit</strong> local .md files directly in Chrome</li>
   <li><strong>Back up</strong> your knowledge base to your own GitHub repository</li>
-  <li><strong>Enhance</strong> exports with AI-generated titles, tags, summaries, and content cleanup (optional — requires your own API key)</li>
+  <li><strong>Enhance</strong> content with AI-generated titles, tags, summaries, and content cleanup (optional — requires your own API key)</li>
 </ul>
 <p><strong>The extension does not use analytics, tracking, telemetry, or advertising.</strong> The developer does not operate any backend servers and does not automatically receive your data.</p>
 
@@ -39,16 +40,27 @@
 <p>The sole exception is the <strong>optional feedback form</strong>, which you may choose to submit manually (see Feedback section below).</p>
 
 <h2>Local Storage</h2>
-<p>All data created or managed by the extension is stored <strong>exclusively on your device</strong> using Chrome's <code>storage.local</code> API and IndexedDB:</p>
+<p>MindArchive stores data in two ways, <strong>all on your device</strong>:</p>
+
+<h3>Knowledge Base — Real Files on Your Disk</h3>
+<p>Knowledge base entries are stored as <strong>standard <code>.md</code> files</strong> in a folder <strong>you choose</strong> on your computer. This uses Chrome's <a href="https://developer.chrome.com/docs/capabilities/web-apis/file-system-access">File System Access API</a>. Your files are regular Markdown files with YAML frontmatter — you can open, edit, copy, or back them up with any tool. <strong>Uninstall the extension and your files remain exactly where they are.</strong></p>
+<p>The extension also stores supporting data for the knowledge base on your disk:</p>
 <ul>
-  <li><strong>Knowledge Base entries</strong> — Your saved content: titles, body (Markdown), tags, categories, source URL, and metadata</li>
-  <li><strong>Categories and tags</strong> — Your organizational structure</li>
-  <li><strong>Settings</strong> — Your preferences, export format defaults, theme, language, and download path</li>
+  <li><strong>Categories and tags</strong> — Organizational structure (<code>.ue-data/data/categories.json</code>)</li>
+  <li><strong>Search index</strong> — Full-text search index for fast local search (<code>.ue-data/data/search-index.json</code>)</li>
+  <li><strong>File handles</strong> — Persisted in IndexedDB so you don't need to re-authorize folders on every session (<code>ue-file-handles</code> database)</li>
+</ul>
+
+<h3>Extension Settings — Chrome Storage</h3>
+<p>Preferences and configuration are stored using Chrome's <code>storage.local</code> API:</p>
+<ul>
+  <li><strong>Settings</strong> — Your preferences, export format defaults, theme, language</li>
   <li><strong>LLM configuration</strong> — Your chosen provider, model, custom prompts, and API key</li>
   <li><strong>GitHub sync configuration</strong> — Your GitHub personal access token, repository name, and branch</li>
   <li><strong>Sync cache</strong> — Content hashes used to detect changes for incremental GitHub backup (computed locally)</li>
+  <li><strong>Role label templates</strong> — Custom role label styles</li>
 </ul>
-<p>This data never leaves your browser unless you explicitly initiate one of the opt-in features below.</p>
+<p>No data leaves your device unless you explicitly initiate one of the opt-in features below.</p>
 
 <h2>User Feedback (Optional)</h2>
 <p>MindArchive includes a feedback form accessible from the extension UI. When you choose to submit feedback, the following information is sent to a GitHub Issues repository (<code>runday/universalExport-feedback</code>) controlled by the developer:</p>
@@ -118,7 +130,6 @@
 <tr><td><code>tabs</code></td><td>Open the preview page, dashboard, and markdown viewer in new tabs</td></tr>
 <tr><td><code>downloads</code></td><td>Save exported files to your computer</td></tr>
 <tr><td><code>storage</code> / <code>unlimitedStorage</code></td><td>Store knowledge base entries, settings, and sync cache locally</td></tr>
-<tr><td><code>alarms</code></td><td>Schedule periodic tasks such as GitHub sync</td></tr>
 <tr><td><code>sidePanel</code></td><td>Provide a side panel for quick note capture</td></tr>
 </table>
 
