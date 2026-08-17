@@ -20,7 +20,7 @@
 <body>
 
 <h1>Privacy Policy for MindArchive</h1>
-<p class="updated">Last updated: 2026-07-28</p>
+<p class="updated">Last updated: 2026-08-17</p>
 
 <h2>Overview</h2>
 <p>MindArchive is a Chrome extension that provides a local, Obsidian-compatible Markdown knowledge base for your AI conversations and web content. It helps you:</p>
@@ -29,10 +29,13 @@
   <li><strong>Edit</strong> content with a built-in WYSIWYG Markdown editor</li>
   <li><strong>Export</strong> AI chat conversations and web text as Markdown, PDF, Word, HTML, CSV, or JSON</li>
   <li><strong>Quick-capture notes</strong> via the side panel</li>
+  <li><strong>Remember form inputs</strong> across websites with the form memory feature</li>
+  <li><strong>Manage bookmarks</strong> with built-in bookmark organization tools</li>
   <li><strong>View and edit</strong> local .md files directly in Chrome</li>
   <li><strong>Back up</strong> your knowledge base to your own GitHub repository</li>
   <li><strong>Enhance</strong> content with AI-generated titles, tags, summaries, and content cleanup (optional — requires your own API key)</li>
 </ul>
+<p><strong>Supported AI chat platforms for content extraction:</strong> ChatGPT, Claude, DeepSeek, Gemini, Kimi, Grok, Qwen (通义千问), Copilot, Perplexity, Doubao (豆包), MiniMax, Dola, and other AI chat websites.</p>
 <p><strong>The extension does not use analytics, tracking, telemetry, or advertising.</strong> The developer does not operate any backend servers and does not automatically receive your data.</p>
 
 <h2>Data Collection</h2>
@@ -59,7 +62,9 @@
   <li><strong>GitHub sync configuration</strong> — Your GitHub personal access token, repository name, and branch</li>
   <li><strong>Sync cache</strong> — Content hashes used to detect changes for incremental GitHub backup (computed locally)</li>
   <li><strong>Role label templates</strong> — Custom role label styles</li>
+  <li><strong>Form memory</strong> — Remembered form inputs organized by domain</li>
 </ul>
+<p>Additionally, your settings (role labels, export preferences, and other configurations) are <strong>automatically backed up</strong> to a local YAML file alongside browser storage. This allows full recovery from local files if browser data is ever cleared. This backup is written to your chosen storage folder and does not leave your device.</p>
 <p>No data leaves your device unless you explicitly initiate one of the opt-in features below.</p>
 
 <h2>User Feedback (Optional)</h2>
@@ -120,6 +125,18 @@
 <h2>Side Panel</h2>
 <p>The extension provides a side panel for quick note capture. Notes you write in the side panel are stored locally alongside your other knowledge base entries. The side panel does not transmit data anywhere.</p>
 
+<h2>Form Memory (Optional Feature)</h2>
+<p>MindArchive includes a <strong>form memory</strong> feature that can automatically remember text you type into form fields across websites. This feature:</p>
+<ul>
+  <li>Is <strong>active by default</strong> but can be paused or disabled at any time</li>
+  <li>Only records text from <code>&lt;input&gt;</code> and <code>&lt;textarea&gt;</code> fields — <strong>password fields are always excluded</strong></li>
+  <li>Filters out very short inputs (fewer than 2 characters) to avoid noise</li>
+  <li>Stores all remembered text <strong>locally</strong> in Chrome's <code>storage.local</code> — no data is transmitted over the network</li>
+  <li>Organizes memories by domain so you can quickly recall previous inputs for a specific website</li>
+  <li>Provides a searchable history accessible from the extension's dashboard</li>
+</ul>
+<p>You can clear all form memory data at any time from the extension settings. No form data leaves your device.</p>
+
 <h2>Permissions</h2>
 <p>The extension requests the following Chrome permissions:</p>
 <table>
@@ -131,6 +148,7 @@
 <tr><td><code>downloads</code></td><td>Save exported files to your computer</td></tr>
 <tr><td><code>storage</code> / <code>unlimitedStorage</code></td><td>Store knowledge base entries, settings, and sync cache locally</td></tr>
 <tr><td><code>sidePanel</code></td><td>Provide a side panel for quick note capture</td></tr>
+<tr><td><code>bookmarks</code></td><td>Enable bookmark management features (create, organize, and search browser bookmarks)</td></tr>
 </table>
 
 <h3>Host Permissions</h3>
